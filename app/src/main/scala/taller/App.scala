@@ -6,6 +6,13 @@ package taller
 object App {
   def main(args: Array[String]): Unit = {
     println(greeting())
+    val multiplicar = new MultiplicarMatrices
+    val m1 = multiplicar.matrizAlAzar(3, 3)
+    val m2 = multiplicar.matrizAlAzar(3, 3)
+    print("Matriz 1: " , m1)
+    print("Matriz 2: " , m2)
+    print("Matriz Resultante: " , multiplicar.multMatriz(m1, m2))
+   
   }
 
   def greeting(): String = "Hello, world!"
