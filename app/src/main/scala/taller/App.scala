@@ -5,53 +5,92 @@ package taller
 import org.scalameter._
 
 object App {
-  def main(args: Array[String]): Unit = {
-    println(greeting())
+    def main(args: Array[String]): Unit = {
+        /* PRUEBA MULTIPLICAR MATRICES SECUENCIAL
+        val multiplicar = new MultiplicarMatrices
+        val m1 = multiplicar.matrizAlAzar(25, 25)
+        val m2 = multiplicar.matrizAlAzar(25, 25)
+        println("Matriz 1: " , m1)
+        println("Matriz 2: " , m2)
+        println("----------------------------------------------------------------")
+        println("Matriz Resultante: " , multiplicar.multMatriz(m1, m2))
+        println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray})
 
-    val multiplicar = new MultiplicarMatrices
-    val m1 = multiplicar.matrizAlAzar(25, 25)
-    val m2 = multiplicar.matrizAlAzar(25, 25)
-    println("Matriz 1: " , m1)
-    println("Matriz 2: " , m2)
-    println("----------------------------------------------------------------")
-    println("Matriz Resultante: " , multiplicar.multMatriz(m1, m2))
-    println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray})
-    
-    println("----------------------------------------------------------------")
-    
-    val multiplicarParalelas = new MultiplicarMatricesParalelas
-    val m1p = multiplicarParalelas.matrizAlAzar(25, 25)
-    val m2p = multiplicarParalelas.matrizAlAzar(25, 25)
-    println("Matriz 1: " , m1p)
-    println("Matriz 2: " , m2p)
-    println("----------------------------------------------------------------")
-    println("Matriz Resultante: " , multiplicarParalelas.multMatriz(m1p, m2p))
-    println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray})
+        println("----------------------------------------------------------------")
+        */
+        /* MULTIPLICAR MATRICES PARALELA
+        val multiplicarParalelas = new MultiplicarMatricesParalelas
+        val m1p = multiplicarParalelas.matrizAlAzar(25, 25)
+        val m2p = multiplicarParalelas.matrizAlAzar(25, 25)
+        println("Matriz 1: " , m1p)
+        println("Matriz 2: " , m2p)
+        println("----------------------------------------------------------------")
+        println("Matriz Resultante: " , multiplicarParalelas.multMatriz(m1p, m2p))
+        println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray})
 
-    println("----------------------------------------------------------------")
+        println("----------------------------------------------------------------")
+        */
+        /* MULTIPLICAR MATRICES RECURSIVA SECUENCIAL
+        val multiplicarMatricesRec = new MultiplicarMatricesRec
+        val matriz1 = multiplicarMatricesRec.matrizAlAzar(2, 10) // Matriz 2x2 con valores aleatorios
+        val matriz2 = multiplicarMatricesRec.matrizAlAzar(2, 10) // Otra matriz 2x2
+        val resultadoRecursivo = multiplicarMatricesRec.multMatrizRec(matriz1, matriz2)
 
-    val multiplicarMatricesRec = new MultiplicarMatricesRec
-    val matriz1 = multiplicarMatricesRec.matrizAlAzar(2, 10) // Matriz 2x2 con valores aleatorios
-    val matriz2 = multiplicarMatricesRec.matrizAlAzar(2, 10) // Otra matriz 2x2
-    val resultadoRecursivo = multiplicarMatricesRec.multMatrizRec(matriz1, matriz2)
+        println("\nResultado de la multiplicación recursiva:")
+        resultadoRecursivo.foreach(println)
+        println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray})
 
-    println("\nResultado de la multiplicación recursiva:")
-    resultadoRecursivo.foreach(println)
-    println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray})
+        println("----------------------------------------------------------------")
+        */
+        /* MULTIPLICAR MATRICES RECURSIVA PARALELA
+        val multiplicarMatricesRecPar = new MultiplicarMatricesRecParalelas
+        val matriz1p = multiplicarMatricesRec.matrizAlAzar(2, 10) // Matriz 2x2 con valores aleatorios
+        val matriz2p = multiplicarMatricesRec.matrizAlAzar(2, 10) // Otra matriz 2x2
+        val resultadoRecursivoP = multiplicarMatricesRecPar.multMatrizRecPar(matriz1p, matriz2p)
 
-    println("----------------------------------------------------------------")
+        println("\nResultado de la multiplicación recursiva paralelo:")
+        resultadoRecursivoP.foreach(println)
+        println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray})
+        */
+        /* MULTIPLICAR MATRICES STRASSEN SECUENCIAL
+        val size = 2 // Tamaño de la matriz (debe ser potencia de 2)
+        val maxValue = 10
 
-    val multiplicarMatricesRecPar = new MultiplicarMatricesRecParalelas
-    val matriz1p = multiplicarMatricesRec.matrizAlAzar(2, 10) // Matriz 2x2 con valores aleatorios
-    val matriz2p = multiplicarMatricesRec.matrizAlAzar(2, 10) // Otra matriz 2x2
-    val resultadoRecursivoP = multiplicarMatricesRecPar.multMatrizRecPar(matriz1, matriz2)
+        val strassen = new MultiplicarMatricesStrassen()
 
-    println("\nResultado de la multiplicación recursiva paralelo:")
-    resultadoRecursivo.foreach(println)
-    println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray})
+        val matriz1 = strassen.matrizAlAzar(size, maxValue)
+        val matriz2 = strassen.matrizAlAzar(size, maxValue)
+
+        println("Matriz 1:")
+        matriz1.foreach(row => println(row.mkString(" ")))
+        println("\nMatriz 2:")
+        matriz2.foreach(row => println(row.mkString(" ")))
+
+        val resultado = strassen.strassenMetodo(matriz1, matriz2)
+
+        println("\nResultado:")
+        resultado.foreach(row => println(row.mkString(" ")))
+        */
+
+        /* MULTIPLICAR MATRICES STRASSEN PARALELO
+        val size = 2 // Tamaño de la matriz (debe ser potencia de 2)
+        val maxValue = 10
+
+        val strassenParalelo = new MultiplicarMatricesStrassenParalelo()
 
 
-  }
+        val matriz1 = strassenParalelo.matrizAlAzar(size, maxValue)
+        val matriz2 = strassenParalelo.matrizAlAzar(size, maxValue)
 
-  def greeting(): String = "Hello, world!"
+        println("Matriz 1:")
+        matriz1.foreach(row => println(row.mkString(" ")))
+        println("\nMatriz 2:")
+        matriz2.foreach(row => println(row.mkString(" ")))
+
+        val resultado = strassenParalelo.strassenParalelo(matriz1, matriz2)
+
+        println("\nResultado:")
+        resultado.foreach(row => println(row.mkString(" ")))
+        */
+    }
 }
