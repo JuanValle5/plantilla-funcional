@@ -6,12 +6,26 @@ package taller
 object App {
   def main(args: Array[String]): Unit = {
     println(greeting())
+
     val multiplicar = new MultiplicarMatrices
-    val m1 = multiplicar.matrizAlAzar(3, 3)
-    val m2 = multiplicar.matrizAlAzar(3, 3)
-    print("Matriz 1: " , m1)
-    print("Matriz 2: " , m2)
-    print("Matriz Resultante: " , multiplicar.multMatriz(m1, m2))
+    val m1 = multiplicar.matrizAlAzar(25, 25)
+    val m2 = multiplicar.matrizAlAzar(25, 25)
+    println("Matriz 1: " , m1)
+    println("Matriz 2: " , m2)
+    println("----------------------------------------------------------------")
+    println("Matriz Resultante: " , multiplicar.multMatriz(m1, m2))
+    
+    println("----------------------------------------------------------------")
+    
+    val multiplicarParalelas = new MultiplicarMatricesparalelas
+    val m1p = multiplicarParalelas.matrizAlAzar(25, 25)
+    val m2p = multiplicarParalelas.matrizAlAzar(25, 25)
+    println("Matriz 1: " , m1p)
+    println("Matriz 2: " , m2p)
+    println("----------------------------------------------------------------")
+    println("Matriz Resultante: " , multiplicarParalelas.multMatriz(m1p, m2p))
+  
+
    
   }
 
