@@ -92,5 +92,17 @@ object App {
         println("\nResultado:")
         resultado.foreach(row => println(row.mkString(" ")))
         */
+        val clase = new ProductoPuntoVectores()
+        val vector1 = clase.vectorAlAzar(5, 10) // Vector de 5 elementos con valores entre 0 y 9
+        val vector2 = clase.vectorAlAzar(5, 10) // Otro vector de 5 elementos
+
+        println("Vector 1:", vector1)
+        println("Vector 2:", vector2)
+
+        val resultadoSecuencial = clase.productoPuntoSecuencial(vector1, vector2)
+        println(s"Producto punto secuencial: $resultadoSecuencial")
+
+        val resultadoParalelo = clase.productoPuntoParalelo(vector1, vector2)
+        println(s"Producto punto paralelo: $resultadoParalelo")
     }
 }
