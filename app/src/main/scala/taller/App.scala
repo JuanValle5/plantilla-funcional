@@ -24,8 +24,16 @@ object App {
     println("Matriz 2: " , m2p)
     println("----------------------------------------------------------------")
     println("Matriz Resultante: " , multiplicarParalelas.multMatriz(m1p, m2p))
-  
 
+    println("----------------------------------------------------------------")
+
+    val multiplicarMatricesRec = new MultiplicarMatricesRec
+    val matriz1 = multiplicarMatricesRec.matrizAlAzar(2, 10) // Matriz 2x2 con valores aleatorios
+    val matriz2 = multiplicarMatricesRec.matrizAlAzar(2, 10) // Otra matriz 2x2
+    val resultadoRecursivo = multiplicarMatricesRec.multMatrizRec(matriz1, matriz2)
+
+    println("\nResultado de la multiplicación recursiva:")
+    resultadoRecursivo.foreach(println)
    
   }
 
