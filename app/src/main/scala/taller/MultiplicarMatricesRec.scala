@@ -1,5 +1,5 @@
 package taller
-
+import org.scalameter._
 import scala.util.Random
 
 class MultiplicarMatricesRec {
