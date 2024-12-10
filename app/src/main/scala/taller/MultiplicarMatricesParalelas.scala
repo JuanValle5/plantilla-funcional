@@ -1,8 +1,8 @@
 package taller
-
+import scala.collection.parallel.CollectionConverters._
 import util.Random
 
-class MultiplicarMatricesparalelas {
+class MultiplicarMatricesParalelas {
     private type Matriz = Vector[Vector[Int]]
 
     // Función para obtener una matriz al azar
@@ -25,9 +25,22 @@ class MultiplicarMatricesparalelas {
     def multMatriz(m1: Matriz, m2: Matriz): Matriz = {
         //vamos a multiplicar 2 matrices al azar de forma paralelam(paralelizable)
         val m2t = traspuesta(m2)
-        Vector.tabulate(m1.length, m2t.length)((i, j) => prodPunto(m1(i), m2t(j)))
+        /*m1.par.map(fila => m2t.par.map(columna => prodPunto(fila,columna)).toVector).toVector
+    */
+        val resultado = m1.par.map { fila =>
+            m2t.par.map { columna =>
+                prodPunto(fila, columna)
+            }.toVector
+        }.toVector
 
-        }
-    
+        resultado
+
+
     }
+
+
+        /*
+
+    */
+}
 

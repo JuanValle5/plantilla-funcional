@@ -17,7 +17,7 @@ object App {
     
     println("----------------------------------------------------------------")
     
-    val multiplicarParalelas = new MultiplicarMatricesparalelas
+    val multiplicarParalelas = new MultiplicarMatricesParalelas
     val m1p = multiplicarParalelas.matrizAlAzar(25, 25)
     val m2p = multiplicarParalelas.matrizAlAzar(25, 25)
     println("Matriz 1: " , m1p)

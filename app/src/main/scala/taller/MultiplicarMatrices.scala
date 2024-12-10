@@ -24,9 +24,10 @@ class MultiplicarMatrices {
 //Implimentacion del codigo Taller 3
     //Funcion para la multiplicacion de matrices
     def multMatriz(m1: Matriz, m2: Matriz):Matriz = {
-       //vamos a multiplicar 2 matrices al azar
+        // Verifica que las dimensiones de las matrices sean compatibles
+        require(m1.head.length == m2.length, "El número de columnas de la primera matriz debe ser igual al número de filas de la segunda matriz.")
+        //vamos a multiplicar 2 matrices al azar
         val m2t = transpuesta(m2)
         Vector.tabulate(m1.length,m2t.length)((i,j)=>prodPunto(m1(i),m2t(j)))
-        
     }
 }
