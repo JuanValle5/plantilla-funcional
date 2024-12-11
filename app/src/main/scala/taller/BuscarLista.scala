@@ -5,6 +5,6 @@ class BuscarLista() {
   lista match {
     case Nil => false
     case x :: xs => if (x == elemento) true else buscarElemento(xs, elemento)
-   }
+  }
   }
 }

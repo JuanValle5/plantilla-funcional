@@ -39,6 +39,17 @@ object App {
     resultadoRecursivo.foreach(println)
     println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray})
 
+    println("----------------------------------------------------------------")
+
+    val multiplicarMatricesRecParalelas = new MultiplicarMatricesRecParalelas
+    val matriz1Par = multiplicarMatricesRecParalelas.matrizAlAzar(2, 10) // Matriz 2x2 con valores aleatorios
+    val matriz2Par = multiplicarMatricesRecParalelas.matrizAlAzar(2, 10) // Otra matriz 2x2
+    val resultadoRecursivoParalelo = multiplicarMatricesRecParalelas.multMatrizRecPar(matriz1Par, matriz2Par)
+
+    println("\nResultado de la multiplicación recursiva paralela:")
+    resultadoRecursivoParalelo.foreach(println)
+    println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray}) 
+
 
   }
 
