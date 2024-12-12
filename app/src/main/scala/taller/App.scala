@@ -6,7 +6,7 @@ import org.scalameter._
 
 object App {
     def main(args: Array[String]): Unit = {
-        /* PRUEBA MULTIPLICAR MATRICES SECUENCIAL
+        //PRUEBA MULTIPLICAR MATRICES SECUENCIAL
         val multiplicar = new MultiplicarMatrices
         val m1 = multiplicar.matrizAlAzar(25, 25)
         val m2 = multiplicar.matrizAlAzar(25, 25)
@@ -17,7 +17,6 @@ object App {
         println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray})
 
         println("----------------------------------------------------------------")
-        */
         /* MULTIPLICAR MATRICES PARALELA
         val multiplicarParalelas = new MultiplicarMatricesParalelas
         val m1p = multiplicarParalelas.matrizAlAzar(25, 25)
@@ -77,6 +76,17 @@ object App {
         val maxValue = 10
 
         val strassenParalelo = new MultiplicarMatricesStrassenParalelo()
+
+    println("----------------------------------------------------------------")
+
+    val multiplicarMatricesRecParalelas = new MultiplicarMatricesRecParalelas
+    val matriz1Par = multiplicarMatricesRecParalelas.matrizAlAzar(2, 10) // Matriz 2x2 con valores aleatorios
+    val matriz2Par = multiplicarMatricesRecParalelas.matrizAlAzar(2, 10) // Otra matriz 2x2
+    val resultadoRecursivoParalelo = multiplicarMatricesRecParalelas.multMatrizRecPar(matriz1Par, matriz2Par)
+
+    println("\nResultado de la multiplicación recursiva paralela:")
+    resultadoRecursivoParalelo.foreach(println)
+    println(withWarmer(new Warmer.Default) measure {(1 to 10000000).toArray}) 
 
 
         val matriz1 = strassenParalelo.matrizAlAzar(size, maxValue)
